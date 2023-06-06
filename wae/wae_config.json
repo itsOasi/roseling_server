@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "debug":true,
+    "name":"My Wae",
+	"cors":true,
+    "repos":{
+        "assets":{
+			"repo":"https://github.com/itsOasi/asset_db.git",
+			"path":"assets"
+    	}
+	},
+    "modules":{
+        "app":"app"
+    }
+}

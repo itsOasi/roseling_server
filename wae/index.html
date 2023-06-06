@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blog Server</title>
+</head>
+<body>
+	<button id="resync">Resync Server</button>
+	<button id="get_catalog">View Catalog</button>
+	<script>
+		let http = {
+			get: async(url) =>
+			{
+				let res = await fetch(url)
+				return await res
+			},
+			post: async(url, data) => {
+				let res = await fetch(url, {
+					method: "post",
+					body: data
+				})
+				return await res
+			}
+
+		}
+
+		document.querySelector("#resync").onclick = async function(){
+			let res = await http.get("/resync");
+			let res_text = await res.text()
+			document.body.append(Object.keys(JSON.parse(res_text)));
+		}
+		document.querySelector("#get_catalog").onclick = async function(){
+			let res = await http.get("/get_catalog");
+			let res_text = await res.text()
+			document.body.append(Object.keys(JSON.parse(res_text)));
+		}
+	</script>
+</body>
+</html>
