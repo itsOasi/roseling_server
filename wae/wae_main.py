@@ -4,7 +4,7 @@ from flask_cors import CORS
 from wae import model, helper, google
 app = Flask(__name__)
 
-ASSET_DIR = "assets/roseling/config.json" # where repo data will be stored
+ASSET_DIR = "assets/roseling/catalog.json" # where repo data will be stored
 ADMIN_PASSWD = "1234" # get from environment variable
 wae_model = model.Model("wae_config.json") #initiate model with a config file
 if wae_model.get_config("cors"):
