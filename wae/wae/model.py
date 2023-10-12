@@ -10,6 +10,7 @@ class Model:
 			filesystem of the current project
 		'''
 		self._config_loc = config_loc # the location of wae_config.json
+		self.git_config()
 		self._repos = RepoList(self._config_loc) # gets all necessary repos
 		self._modules = ModuleList(self._config_loc) # reads loads all necessary modules (from repos)
 		self.index_page = shell.get_config(self._config_loc, "index_page")
