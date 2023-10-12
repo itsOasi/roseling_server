@@ -13,6 +13,16 @@ class Model:
 		self._repos = RepoList(self._config_loc) # gets all necessary repos
 		self._modules = ModuleList(self._config_loc) # reads loads all necessary modules (from repos)
 		self.index_page = shell.get_config(self._config_loc, "index_page")
+	
+	def git_config(self):
+		if self.get_config("git-username") and self.get_config("git-username"):
+			helper.cmd(f"git config --global user.name {self.get_config('git-username')}")
+			helper.cmd(f"git config --global user.email {self.get_config('git-email')}")
+			helper.log("git config successful")
+		else:
+			helper.log_lvl("GIT CONFIG ERROR: git email and/or username not found", 2)
+
+
 
 	def clone(self, name):
 		self._repos.clone(name)		
