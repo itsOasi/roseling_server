@@ -36,6 +36,13 @@ def change_pass():
 		return helper.dict_to_json({"password_changed":True})
 	return helper.dict_to_json({"pasword_changed":False})
 
+@app.route("/get_catalog")
+def get_catalog():
+	helper.log(f"{request.headers}")
+	res = helper.json_to_dict(ASSET_DIR)
+	helper.log(f"{res}")
+	return res
+
 @app.route("/resync")
 def resync():
 	wae_model.pull("assets")
